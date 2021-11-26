@@ -10,6 +10,8 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 class Reply extends Model
 {
     use HasFactory;
+    
+    protected $guarded = [];
 
     public function user() : BelongsTo
     {
@@ -23,6 +25,6 @@ class Reply extends Model
 
     public function like() : HasMany
     {
-        return $this->hasMany(Category::class);
+        return $this->hasMany(Like::class);
     }
 }

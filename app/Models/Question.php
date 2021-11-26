@@ -24,7 +24,7 @@ class Question extends Model
         return $this->belongsTo(User::class);
     }
 
-    public function replys() : HasMany
+    public function replies() : HasMany
     {
         return $this->hasMany(Reply::class);
     }

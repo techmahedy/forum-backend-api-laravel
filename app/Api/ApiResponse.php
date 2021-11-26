@@ -30,7 +30,7 @@ class ApiResponse extends Response
     {
         return response()->json([
             'isSuccess' => true,
-            'message'   => '',
+            'message'   => $message,
             'data'      =>  [
                 $data_key => $data
             ]
@@ -46,4 +46,9 @@ class ApiResponse extends Response
             ]
         );
     }
+
+    //TokenBlacklistedException
+       // JWTException
+        //TokenInvalidException
+        // TokenExpiredException
 }

@@ -5,6 +5,7 @@ namespace App\Exceptions;
 use Throwable;
 use Illuminate\Http\Request;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
+use Tymon\JWTAuth\Exceptions\JWTException;
 
 class Handler extends ExceptionHandler
 {   
@@ -14,6 +15,7 @@ class Handler extends ExceptionHandler
      *
      * @var string[]
      */
+
     protected $dontReport = [
         //
     ];
@@ -23,6 +25,7 @@ class Handler extends ExceptionHandler
      *
      * @var string[]
      */
+
     protected $dontFlash = [
         'current_password',
         'password',
@@ -34,10 +37,11 @@ class Handler extends ExceptionHandler
      *
      * @return void
      */
+
     public function register()
     {
         $this->reportable(function (Throwable $exception, Request $request) {
-
+             
         });
     }
 }
