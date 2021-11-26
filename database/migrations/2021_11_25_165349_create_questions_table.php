@@ -23,7 +23,7 @@ class CreateQuestionsTable extends Migration
                 ->index()
                 ->constrained()
                 ->onDelete('cascade');
-            $table->string('question_title')->unique();
+            $table->string('question_title');
             $table->string('question_slug')->unique();
             $table->tinyText('question_body');
             $table->timestamps();

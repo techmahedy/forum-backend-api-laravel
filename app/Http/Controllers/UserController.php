@@ -17,12 +17,13 @@ class UserController extends Controller
         $this->response = $apiResponse;
     }
 
-    public function getAllActiveUsers(User $user)
+    public function index(User $user)
     {
         try   
         {  
             $user = $user->get()->map(function($user){
                 return [
+                    'id'    => $user->id,
                     'name'  => $user->name,
                     'email' => $user->email
                 ];

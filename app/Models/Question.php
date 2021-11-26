@@ -11,7 +11,13 @@ class Question extends Model
 {
     use HasFactory;
 
-    protected $guarded = [];
+    protected $fillable = [
+        'user_id',
+        'category_id',
+        'question_title',
+        'question_slug',
+        'question_body'
+    ];
 
     public function user() : BelongsTo
     {
