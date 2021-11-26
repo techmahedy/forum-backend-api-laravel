@@ -7,9 +7,8 @@ use App\Models\Question;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use App\Http\Requests\StoreQuestion;
-use Illuminate\Support\Facades\Validator;
-use Symfony\Component\HttpKernel\Exception\HttpException;
-use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
+use App\Http\Resources\QuestionCollection;
+use App\Http\Resources\QuestionResource;
 
 class QuestionController extends Controller
 {
@@ -21,26 +20,13 @@ class QuestionController extends Controller
     }
 
     public function index(Question $question)
-    {
-        $question = $question->with([
-                            'user:id,name',
-                            'category:id,category_name'
-                        ])
-                        ->orderBy('id','desc')
-                        ->get();
-        
-        return $this->response->successWithData('', 'questions', $question);
+    {   
+        return new QuestionCollection($question->all());
     }
 
     public function show(Question $question)
     {
-        $question = $question->load([
-                            'user:id,name',
-                            'category:id,category_name'
-                        ]);
-          
-        return $this->response->successWithData('', 'question', $question);
-
+        return new QuestionResource($question);
     }
 
     public function store(StoreQuestion $request)
