@@ -20,8 +20,6 @@ class LikeController extends Controller
        $reply = $reply->like()->create([
                     'user_id'    => $request->user_id
                 ]);
-
        return $this->response->successWithData('Like created successfully!','like', $reply);
-
     }
 }

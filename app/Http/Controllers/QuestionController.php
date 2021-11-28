@@ -76,9 +76,7 @@ class QuestionController extends Controller
         try   
         {  
             $question->delete();
-          
             return $this->response->success('Question deleted successfully!');
-
         } catch(\Exception $e) { 
             $this->response->errorLog($e);
             return $this->response->error($e->getMessage());
