@@ -8,9 +8,10 @@ Vue.use(Vuetify)
 Vue.component('app-home', require('./components/AppHome.vue').default);
 
 import router from './Router/router.js';
-import Helper from './Helper/Helper';
+import User from './Helper/User';
 
-window.Helper = Helper;
+window.User = User;
+window.EventBus = new Vue();
 
 const app = new Vue({
     el: '#app',

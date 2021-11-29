@@ -1,11 +1,11 @@
 import Token from "./Token"
 
-class Helper 
+class User 
 {
     login = formData => {
         axios.post('/api/v1/login',formData)
                 .then((response)=>{
-                   this.responseAfterLogin(response)
+                   this.responseAfterLogin(response);
                 })
                 .catch((error)=>{
                     console.log(error)
@@ -17,6 +17,7 @@ class Helper
         const __user = response.data.user;
         if(Token.isValidPayload(__token)){
             this.store(__user,__token);
+            window.location = '/forum';
         }
     }
 
@@ -45,6 +46,35 @@ class Helper
     getUser = () => {
         return localStorage.getItem('user');
     }
+
+    hasToken = () => {
+        const __storedToken = this.getToken();
+        if(__storedToken){
+            return Token.isValidPayload(__storedToken) ? true : false;
+        }
+
+        return false;
+    }
+
+    loggedIn = () => {
+        return this.hasToken();
+    }
+
+    logout = () => {
+        this.clear();
+        window.location = '/forum';
+    }
+    user = () => {
+        if(this.loggedIn()){
+            return this.getUser();
+        }
+    }
+    id = () => {
+        if(this.loggedIn()){
+            const payload = Token.payload(this.getToken());
+            return payload?.sub;
+        }
+    }
 }
 
-export default Helper = new Helper();
+export default User = new User();
