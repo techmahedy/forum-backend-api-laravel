@@ -2,11 +2,11 @@
     <v-toolbar>
       <v-toolbar-title>CodeCheef</v-toolbar-title>
       <v-spacer></v-spacer>
-      <v-toolbar-items class="hidden-sm-and-down">
-         <v-btn flat>Forum</v-btn>
-         <v-btn flat>Ask Question</v-btn>
-         <v-btn flat>Register</v-btn>
-      </v-toolbar-items> 
+      <div class="hidden-sm-and-down">
+         <router-link to="/login">
+            <v-btn text>Login</v-btn>
+         </router-link>
+      </div> 
     </v-toolbar>
 </template>
 
