@@ -16,8 +16,9 @@ export default {
        return {
           items : [
             {title:'Forum', to: '/forum', show: true},
+            {title:'Ask Question', to: '/create/question', show: true},
             {title:'Login', to: '/login', show: ! User.loggedIn()},
-            {title:'Logout', to: '/logout', show: User.loggedIn()}
+            {title:'Logout', to: '/logout', show: User.loggedIn()}, 
           ],
        }
     },

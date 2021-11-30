@@ -21,11 +21,15 @@ class QuestionController extends Controller
 
     public function index(Question $question)
     {   
-        return new QuestionCollection($question->all());
+        $question = $question
+                        ->withCount('replies')
+                        ->get();
+
+        return new QuestionCollection($question);
     }
 
     public function show(Question $question)
-    {
+    {              
         return new QuestionResource($question);
     }
 
@@ -34,7 +38,7 @@ class QuestionController extends Controller
         try {  
             
             $question = new Question;
-            $question->user_id        = $request->user_id;
+            $question->user_id        = auth()->id();
             $question->category_id    = $request->category_id;
             $question->question_title = $request->question_title;
             $question->question_slug  = Str::slug($request->question_title);

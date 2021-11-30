@@ -14,7 +14,7 @@ class CategoryCollection extends ResourceCollection
                 'categories' => $this->collection->map(function($data) {
                     return [
                         'id'         => $data->id,
-                        'name'       => $data->category_title,
+                        'name'       => $data->category_name,
                         'slug'       => $data->category_slug,
                         'created_at'    => Carbon::parse($data->created_at)->toDateTimeString()
                     ];
